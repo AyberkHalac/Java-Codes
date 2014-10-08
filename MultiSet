@@ -1,7 +1,5 @@
 package com.ayberk.MultiSet;
-/**
- *
- */
+
 import java.util.ArrayList;
 
 /**
