@@ -1,0 +1,400 @@
+package com.ayberk.MultiSet;
+
+import static org.junit.Assert.*;
+
+import java.util.ArrayList;
+
+import org.junit.Test;
+
+/**
+ * @author <strong>Ayberk Halaç 111101044</strong>
+ * @param <E>
+ */
+public class MultiSetTest<E> {
+
+	@Test
+	public void testAdd() {
+
+		MultiSet<Integer> m1 = new MultiSet<Integer>();
+		MultiSet<String> m2 = new MultiSet<String>();
+		MultiSet<Character> m3 = new MultiSet<Character>();
+		MultiSet<Object> m4 = new MultiSet<Object>();
+		System.out.println("\t!!!!!! testAdd() method check !!!!!!\n\n");
+		// null checker
+		assertNotNull(m1);
+		assertNotNull(m2);
+		assertNotNull(m3);
+		assertNotNull(m4);
+
+		// m1 test case
+		m1.addCaller(0);
+		m1.addCaller(1);
+		m1.addCaller(2);
+		assertTrue(m1.getElementList().get(0).equals(0));
+		assertTrue(m1.getElementList().get(1).equals(1));
+		assertTrue(m1.getElementList().get(2).equals(2));
+		System.out.println("---- m1 test case ----");
+		m1.dispCaller();
+
+		// m2 test case
+		m2.addCaller("ayberk");
+		m2.addCaller("computer");
+		m2.addCaller("science");
+		assertTrue(m2.getElementList().get(0).equals("ayberk"));
+		assertTrue(m2.getElementList().get(1).equals("computer"));
+		assertTrue(m2.getElementList().get(2).equals("science"));
+		System.out.println("\n\n---- m2 test case ----");
+		m2.dispCaller();
+
+		// m3 test case
+		m3.addCaller('a');
+		m3.addCaller('b');
+		m3.addCaller('c');
+		assertTrue(m3.getElementList().get(0).equals('a'));
+		assertTrue(m3.getElementList().get(1).equals('b'));
+		assertTrue(m3.getElementList().get(2).equals('c'));
+		System.out.println("\n\n---- m3 test case ----");
+		m3.dispCaller();
+
+		// m4 test case
+		m4.addCaller(m1);
+		m4.addCaller(m2);
+		m4.addCaller(m3);
+		assertTrue(m4.getElementList().get(0).equals(m1));
+		assertTrue(m4.getElementList().get(1).equals(m2));
+		assertTrue(m4.getElementList().get(2).equals(m3));
+		System.out.println("\n\n---- m4 test case ----");
+		m4.dispCaller();
+
+	}
+
+	@Test
+	public void testContains() {
+
+		MultiSet<Integer> m1 = new MultiSet<Integer>();
+		MultiSet<String> m2 = new MultiSet<String>();
+		MultiSet<Character> m3 = new MultiSet<Character>();
+		MultiSet<Object> m4 = new MultiSet<Object>();
+		System.out.println("\n\n\t!!!!!! testContains() method check !!!!!!");
+
+		// null checker
+		assertNotNull(m1);
+		assertNotNull(m2);
+		assertNotNull(m3);
+		assertNotNull(m4);
+
+		// m1 test case
+		assertEquals(false, m1.containsCaller(1));
+		m1.addCaller(1);
+		m1.addCaller(2);
+		assertEquals(true, m1.containsCaller(1));
+		assertEquals(false, m1.containsCaller(3));
+		assertEquals(true, m1.containsCaller(2));
+		System.out.println(("\n\n---- m1 test case ----"));
+		m1.dispCaller();
+
+		// m2 test case
+		assertEquals(false, m2.containsCaller("ayberk"));
+		m2.addCaller("ayberk");
+		m2.addCaller("halac");
+		assertEquals(true, m2.containsCaller("ayberk"));
+		assertEquals(true, m2.containsCaller("halac"));
+		assertEquals(false, m2.containsCaller("comp"));
+		System.out.println(("\n\n---- m2 test case ----"));
+		m2.dispCaller();
+
+		// m3 test case
+		assertEquals(false, m3.containsCaller('$'));
+		m3.addCaller('b');
+		m3.addCaller('a');
+		assertEquals(true, m3.containsCaller('b'));
+		assertEquals(true, m3.containsCaller('a'));
+		assertEquals(false, m3.containsCaller('£'));
+		System.out.println(("\n\n---- m3 test case ----"));
+		m3.dispCaller();
+
+		// m4 test case
+		assertEquals(false, m4.containsCaller(true));
+		m4.addCaller(m1);
+		m4.addCaller(m2);
+		assertEquals(true, m4.containsCaller(m1));
+		assertEquals(true, m4.containsCaller(m2));
+		assertEquals(false, m4.containsCaller(m3));
+		System.out.println(("\n\n---- m4 test case ----"));
+		m4.dispCaller();
+
+	}
+
+	@Test
+	public void testDisp() {
+		MultiSet<Integer> m1 = new MultiSet<Integer>();
+		MultiSet<String> m2 = new MultiSet<String>();
+		MultiSet<Character> m3 = new MultiSet<Character>();
+		MultiSet<Object> m4 = new MultiSet<Object>();
+		System.out.println("\n\n\t!!!!!! testDisp() method check !!!!!!");
+		// null checker
+		assertNotNull(m1);
+		assertNotNull(m2);
+		assertNotNull(m3);
+		assertNotNull(m4);
+
+		m1.dispCaller();
+		m2.dispCaller();
+		m3.dispCaller();
+		m4.dispCaller();
+
+	}
+
+	@Test
+	public void testCount() {
+		MultiSet<Integer> m1 = new MultiSet<Integer>();
+		MultiSet<String> m2 = new MultiSet<String>();
+		MultiSet<Character> m3 = new MultiSet<Character>();
+		MultiSet<Object> m4 = new MultiSet<Object>();
+		System.out.println("\n\n\t!!!!!! testCount() method check !!!!!!");
+
+		// null checker
+		assertNotNull(m1);
+		assertNotNull(m2);
+		assertNotNull(m3);
+		assertNotNull(m4);
+
+		// m1 test case
+		System.out.println(("\n\n---- m1 test case ----"));
+		for (int i = 0; i < 15; i++)
+			m1.addCaller(1);
+		assertEquals(15, m1.countCaller(1));
+		assertEquals(0, m1.countCaller(2));
+		m1.dispCaller();
+
+		// m2 test case
+		System.out.println(("\n\n---- m2 test case ----"));
+		for (int i = 0; i < 15; i++)
+			m2.addCaller("ayberk");
+		assertEquals(0, m2.countCaller("halac"));
+		assertEquals(15, m2.countCaller("ayberk"));
+		m2.dispCaller();
+
+		// m3 test case
+		System.out.println(("\n\n---- m3 test case ----"));
+		for (int i = 0; i < 15; i++)
+			m3.addCaller('q');
+		assertEquals(0, m3.countCaller('a'));
+		assertEquals(15, m3.countCaller('q'));
+		m3.dispCaller();
+
+		// m4 test case
+		System.out.println(("\n\n---- m4 test case ----"));
+		for (int i = 0; i < 15; i++)
+			m4.addCaller(m1);
+		assertEquals(0, m4.countCaller(m2));
+		assertEquals(15, m4.countCaller(m1));
+		m4.dispCaller();
+	}
+
+	@Test
+	public void testCount_2() {
+		MultiSet<Integer> m1 = new MultiSet<Integer>();
+		ArrayList<Integer> a1 = new ArrayList<Integer>();
+
+		MultiSet<String> m2 = new MultiSet<String>();
+		ArrayList<String> a2 = new ArrayList<String>();
+
+		MultiSet<Character> m3 = new MultiSet<Character>();
+		ArrayList<Character> a3 = new ArrayList<Character>();
+
+		MultiSet<Object> m4 = new MultiSet<Object>();
+		ArrayList<Object> a4 = new ArrayList<Object>();
+
+		// null checker
+		assertNotNull(m1);
+		assertNotNull(m2);
+		assertNotNull(m3);
+		assertNotNull(m4);
+
+		System.out.println("\n\n\t!!!!!! testCount_2() method check !!!!!!");
+
+		// a1 test case
+		for (int i = 0; i < 15; i++)
+			a1.add(1);
+		System.out.println(("\n\n---- a1 test case ----"));
+		System.out.println(a1.size());
+		assertEquals(15, m1.countCaller(1, a1));
+
+		// a2 test case
+		for (int i = 0; i < 15; i++)
+			a2.add("ayberk");
+		System.out.println(("\n\n---- a2 test case ----"));
+		System.out.println(a2.size());
+		assertEquals(15, m2.countCaller("ayberk", a2));
+
+		// a3 test case
+		for (int i = 0; i < 15; i++)
+			a3.add('a');
+		System.out.println(("\n\n---- a3 test case ----"));
+		System.out.println(a3.size());
+		assertEquals(15, m3.countCaller('a', a3));
+
+		// a4 test case
+		for (int i = 0; i < 15; i++)
+			a4.add(m1);
+		System.out.println(("\n\n---- a4 test case ----"));
+		System.out.println(a4.size());
+		assertEquals(15, m4.countCaller(m1, a4));
+	}
+
+	@Test
+	public void testIs_sub_bag() {
+		MultiSet<Integer> m1 = new MultiSet<Integer>();
+		ArrayList<Integer> a1 = new ArrayList<Integer>();
+
+		MultiSet<String> m2 = new MultiSet<String>();
+		ArrayList<String> a2 = new ArrayList<String>();
+
+		System.out.println("\n\n\t!!!!!! testIs_sub_bag() method check !!!!!!");
+
+		// a2 test case
+		assertEquals(true, m1.is_sub_bagCaller(a1));
+
+		m1.addCaller(1);
+		m1.addCaller(3);
+		m1.addCaller(4);
+		a1.add(1);
+		a1.add(2);
+		a1.add(3);
+		a1.add(4);
+		System.out.println(m1.is_sub_bagCaller(a1));
+		System.out.println(a1);
+		System.out.println(m1.getElementList() + "\n-------------\n");
+
+		assertEquals(true, m1.is_sub_bagCaller(a1));
+
+		a1.remove(2);
+		System.out.println(m1.is_sub_bagCaller(a1));
+		System.out.println(a1);
+		System.out.println(m1.getElementList() + "\n-------------\n");
+
+		assertEquals(false, m1.is_sub_bagCaller(a1));
+		a1.clear();
+		assertEquals(false, m1.is_sub_bagCaller(a1));
+		System.out.println(m1.is_sub_bagCaller(a1));
+		System.out.println(a1);
+		System.out.println(m1.getElementList() + "\n-------------\n");
+
+		// a2 test case
+		System.out.println(m2.is_sub_bagCaller(a2));
+		System.out.println(a2);
+		System.out.println(m2.getElementList() + "\n-------------\n");
+		assertEquals(true, m2.is_sub_bagCaller(a2));
+		a2.add("a");
+		a2.add("b");
+		System.out.println(m2.is_sub_bagCaller(a2));
+		System.out.println(a2);
+		System.out.println(m2.getElementList() + "\n-------------\n");
+		assertEquals(true, m2.is_sub_bagCaller(a2));
+		m2.addCaller("c");
+		System.out.println(m2.is_sub_bagCaller(a2));
+		System.out.println(a2);
+		System.out.println(m2.getElementList() + "\n-------------\n");
+		assertEquals(false, m2.is_sub_bagCaller(a2));
+
+	}
+
+	@Test
+	public void testIntersection() {
+		MultiSet<Integer> m1 = new MultiSet<Integer>();
+		ArrayList<Integer> a1 = new ArrayList<Integer>();
+
+		MultiSet<String> m2 = new MultiSet<String>();
+		ArrayList<String> a2 = new ArrayList<String>();
+
+		System.out
+				.println("\n\n\t!!!!!! testIntersection() method check !!!!!!\n");
+
+		// a1 test case
+		for (int i = 0; i < 50; i++)
+			m1.addCaller(i);
+		for (int i = 48; i < 55; i++)
+			a1.add(i);
+		System.out.println(m1.getElementList());
+		System.out.println(a1);
+		assertEquals(48, m1.intersectionCaller(a1).get(0).intValue());
+		assertEquals(49, m1.intersectionCaller(a1).get(1).intValue());
+		System.out.println(m1.intersectionCaller(a1));
+
+		// a2 test case
+		for (int i = 0; i < 50; i++)
+			m2.addCaller("a");
+		a2.add("a");
+		a2.add("b");
+		a2.add("c");
+		a2.add("d");
+		a2.add("a");
+
+		System.out.println("\n---------------------\n" + m2.getElementList());
+		System.out.println(a2);
+		assertEquals("a", m2.intersectionCaller(a2).get(0).toString());
+		assertEquals("a", m2.intersectionCaller(a2).get(1).toString());
+		System.out.println(m2.intersectionCaller(a2));
+
+	}
+
+	@SuppressWarnings("unchecked")
+	@Test
+	public void testUnion() {
+		MultiSet<Integer> m1 = new MultiSet<Integer>();
+		ArrayList<Integer> a1 = new ArrayList<Integer>();
+		MultiSet<String> m2 = new MultiSet<String>();
+		ArrayList<String> a2 = new ArrayList<String>();
+		MultiSet<E> m3 = new MultiSet<E>();
+		ArrayList<E> a3 = new ArrayList<E>();
+
+		System.out.println("\n\n\t!!!!!! testUnion() method check !!!!!!\n");
+
+		// a1 test case
+		for (int i = 0; i < 5; i++)
+			m1.addCaller(i);
+		for (int i = 3; i < 8; i++)
+			a1.add(i);
+		System.out.println("ElementList : " + m1.getElementList());
+		System.out.println("E List : " + a1);
+		System.out.println("unionList : " + m1.unionCaller(a1));
+		assertEquals(8, m1.unionCaller(a1).size());
+		assertEquals(0, m1.unionCaller(a1).get(0).intValue());
+
+		// a2 test case
+		m2.addCaller("a");
+		m2.addCaller("y");
+		m2.addCaller("b");
+		m2.addCaller("e");
+		m2.addCaller("a");
+		a2.add("r");
+		a2.add("r");
+		a2.add("k");
+		a2.add("a");
+		System.out.println("\n---------------------\nElementList : "
+				+ m2.getElementList());
+		System.out.println("E List : " + a2);
+		System.out.println("unionList : " + m2.unionCaller(a2));
+		assertEquals(8, m2.unionCaller(a2).size());
+		assertEquals("y", m2.unionCaller(a2).get(0).toString());
+
+		// a2 test case
+		E element = (E) "a";
+		m3.addCaller(element);
+		m3.addCaller(element);
+		m3.addCaller(element);
+		a3.add((E) "q");
+		a3.add((E) "c");
+		a3.add((E) "q");
+		a3.add((E) "a");
+		System.out.println("\n---------------------\nElementList : "
+				+ m3.getElementList());
+		System.out.println("E List : " + a3);
+		System.out.println("unionList : " + m3.unionCaller(a3));
+		assertEquals(6, m3.unionCaller(a3).size());
+		assertEquals("a", m3.unionCaller(a3).get(0).toString());
+
+	}
+
+}
