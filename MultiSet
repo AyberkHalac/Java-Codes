@@ -249,7 +249,7 @@ public class MultiSet<E> {
 	 */
 	private ArrayList<E> intersection(ArrayList<E> List) {
 		ArrayList<E> checkerSum = new ArrayList<E>();// Reserve addition of
-														// ArrayList and List.
+							// ArrayList and List.
 		ArrayList<E> saver = new ArrayList<E>();
 		checkerSum.addAll(this.ElementList);
 		checkerSum.addAll(List);
@@ -285,12 +285,12 @@ public class MultiSet<E> {
 	 */
 
 	private ArrayList<E> union(ArrayList<E> List) {
-		ArrayList<E> checkerSum = new ArrayList<E>();// Reserve addition of
-														// ArrayList and List.
+		ArrayList<E> checkerSum = new ArrayList<E>();   // Reserve addition of
+						         	// ArrayList and List.
 		ArrayList<E> intersectionList = new ArrayList<E>();// Reserve
-															// intersection of
-															// ArrayList and
-															// List.
+								// intersection of
+								// ArrayList and
+								// List.
 		checkerSum.addAll(this.ElementList);
 		checkerSum.addAll(List);
 		intersectionList = this.intersection(List);
