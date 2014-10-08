@@ -1,0 +1,331 @@
+package com.ayberk.MultiSet;
+
+import java.util.ArrayList;
+
+/**
+ * @
+ * @author <strong>Ayberk Halaç 111101044</strong>
+ * @param <E>
+ *            Generic E
+ */
+public class MultiSet<E> {
+	/***
+	 * 
+	 * MultiSet() is an empty constructor method of MultiSet<E>.
+	 */
+	public MultiSet() {
+
+	}
+
+	/**
+	 * addCaller(E element) method calls add(E element) private method. Method
+	 * adds 'element' to Generic ElementList.
+	 * 
+	 * @param element
+	 *            Element is an element of E generic class.
+	 */
+	public void addCaller(E element) {
+		this.add(element);
+	}
+
+	/**
+	 * containsCaller(E element) method calls contains(E element) method.
+	 * Contains Method checks the element that occurs in ElementList
+	 * 
+	 * @param element
+	 *            Element is an element of E generic class.
+	 * @return True or False If element is found in ElementList method returns
+	 *         true else false.
+	 */
+	public boolean containsCaller(E element) {
+		return this.contains(element);
+	}
+
+	/**
+	 * dispCaller() calls private disp() method. disp() is a void method. It
+	 * prints the elements of ElementList.
+	 *
+	 */
+	public void dispCaller() {
+		this.disp();
+	}
+
+	/**
+	 * countCaller(E element) method calls count(E element) private method. This
+	 * method counts the number of E element in the ElemenList.
+	 * 
+	 * @param element
+	 *            is an element of E generic class
+	 * @return counter is counts the number of the elements that occurs in
+	 *         ElementList.
+	 */
+
+	public int countCaller(E element) {
+		return this.count(element);
+	}
+
+	/**
+	 * countCaller(E element, ArrayList<E> List) method calls count(E element,
+	 * ArrayList<E> List) private method. This method counts the number of E
+	 * element in the ElemenList.
+	 * 
+	 * @param List
+	 *            is a Generic ArrayList given by user.
+	 * @param element
+	 *            is an element of E generic class
+	 * @return counter is counts the number of the elements that occurs in
+	 *         ElementList.
+	 */
+	public int countCaller(E element, ArrayList<E> List) {
+		return this.count(element, List);
+	}
+
+	/**
+	 * is_sub_bagCaller(ArrayList<E> List) method calls is_sub_bag(ArrayList<E>
+	 * List) private method. This method is searching inside of the ElementList
+	 * and ArrayList variable and checks sub bag situation
+	 * 
+	 * @param List
+	 *            is an ArrayList variable that given by user.
+	 * @return True or False boolean state.
+	 */
+	public boolean is_sub_bagCaller(ArrayList<E> List) {
+		return this.is_sub_bag(List);
+	}
+
+	/**
+	 * intersectionCaller(ArrayList<E> List) method calls private. Intersection
+	 * method using a checkerSum as an ArrayList. checkerSum saves addition of
+	 * ElementList and List variables. intersection method is using
+	 * <strong>private boolean is_sub_bag(ArrayList<E> List)</strong>
+	 * 
+	 * @param List
+	 *            is an ArrayList variable that given by user.
+	 * @return saver is an ArrayList variable that used for save the
+	 *         intersecting elements in checkerSum.
+	 */
+
+	public ArrayList<E> intersectionCaller(ArrayList<E> List) {
+		return this.intersection(List);
+	}
+
+	/**
+	 * unionCaller(ArrayList<E> List) method calls union(ArrayList<E> List)
+	 * private method. Method uses checkerSum and remove the intersecting
+	 * elements from checkerSum. union method is using <strong>private
+	 * ArrayList<E> intersection(ArrayList<E>List)</strong>
+	 * 
+	 * @param List
+	 *            is an ArrayList variable that given by user.
+	 * @return checkerSum is an ArrayList. checkerSum saves addition of
+	 *         ElementList and List.
+	 */
+
+	public ArrayList<E> unionCaller(ArrayList<E> List) {
+		return this.union(List);
+	}
+
+	/***
+	 * add(E element) Method adds 'element' to Generic ElementList.
+	 * 
+	 * @param element
+	 *            Element is an element of E generic class.
+	 */
+
+	private void add(E element) {
+		ElementList.add(element);
+	}
+
+	/***
+	 * Contains Method checks the element that occurs in ElementList
+	 * 
+	 * @param element
+	 *            Element is an element of E generic class.
+	 * @return True or False If element is found in ElementList method returns
+	 *         true else false.
+	 */
+
+	private boolean contains(E element) {
+		for (E checker : this.ElementList) {
+			if (checker.equals(element))
+				return true;
+		}
+		return false;
+	}
+
+	/***
+	 * disp() is a void method. It prints the elements of ElementList.
+	 */
+	private void disp() {
+		int i = 1;
+		for (E element : this.ElementList) {
+			System.out.println(i + "- " + element.toString());
+			i++;
+		}
+		i = 1;
+	}
+
+	/***
+	 * @param element
+	 *            is an element of E generic class
+	 * @return counter is counts the number of the elements that occurs in
+	 *         ElementList.
+	 */
+	private int count(E element) {
+		int counter = 0;
+		for (E checker : this.ElementList) {
+			if (checker.equals(element))
+				counter++;
+		}
+		/*
+		 * if (counter == 0) System.out.println(element.toString() +
+		 * " is not found !");
+		 */
+		return counter;
+	}
+
+	/**
+	 * Method search the number of the repeater element inside of the List.
+	 * 
+	 * @param List
+	 *            is a Generic ArrayList given by user.
+	 * @param element
+	 *            is an element of E generic class
+	 * @return counter is counts the number of the elements that occurs in
+	 *         ElementList.
+	 */
+	private int count(E element, ArrayList<E> List) {
+		int counter = 0;
+		for (E checker : List) {
+			if (checker.equals(element))
+				counter++;
+		}
+		/*
+		 * if (counter == 0) System.out.println(element.toString() +
+		 * " is not found !");
+		 */
+		return counter;
+	}
+
+	/**
+	 * This method is searching inside of the ElementList and ArrayList variable
+	 * and checks sub bag situation
+	 * 
+	 * @param List
+	 *            is an ArrayList variable that given by user.
+	 * @return True or False boolean state.
+	 */
+	private boolean is_sub_bag(ArrayList<E> List) {
+		boolean checker = false;
+		int counter = 0;
+		if (List != null && List.size() != 0)
+			for (int i = 0; i < this.ElementList.size(); i++) {
+				checker = false;
+				for (int j = 0; j < List.size(); j++) {
+					if (this.ElementList.get(i).equals(List.get(j))) {
+						checker = true;
+						counter++;
+						continue;
+					}
+				}
+				if (checker == false)
+					return false;
+			}
+
+		if (counter == ElementList.size())
+			return true;
+		return false;
+	}
+
+	/**
+	 * intersection method using checkerSum is an ArrayList. checkerSum saves
+	 * addition of ElementList and List. intersection method is using
+	 * <strong>private boolean is_sub_bag(ArrayList<E> List)</strong>
+	 * 
+	 * @param List
+	 *            is an ArrayList variable that given by user.
+	 * @return saver is an ArrayList variable that used for save the
+	 *         intersecting elements in checkerSum.
+	 */
+	private ArrayList<E> intersection(ArrayList<E> List) {
+		ArrayList<E> checkerSum = new ArrayList<E>();// Reserve addition of
+														// ArrayList and List.
+		ArrayList<E> saver = new ArrayList<E>();
+		checkerSum.addAll(this.ElementList);
+		checkerSum.addAll(List);
+		E element = null;
+		while (checkerSum.size() != 0) {
+			element = checkerSum.get(0);
+			int length = Math.min(this.count(checkerSum.get(0), List),
+					this.count(checkerSum.get(0)));// Minimum
+
+			for (int i = 0; i < length; i++)
+				saver.add(checkerSum.get(0));
+			for (int i = 0; i < checkerSum.size();) {
+				if (checkerSum.get(i).equals(element))
+					checkerSum.remove(i);
+
+				else
+					i++;
+			}
+		}
+		return saver;
+	}
+
+	/**
+	 * Method uses checkerSum and remove the intersecting elements from
+	 * checkerSum. union method is using <strong>private ArrayList<E>
+	 * intersection(ArrayList<E>List)</strong>
+	 * 
+	 * @param List
+	 *            is an ArrayList variable that given by user.
+	 * @return checkerSum is an ArrayList. checkerSum saves addition of
+	 *         ElementList and List. Then method use checkerSum and remove the
+	 *         intersecting elements from checkerSum.
+	 */
+
+	private ArrayList<E> union(ArrayList<E> List) {
+		ArrayList<E> checkerSum = new ArrayList<E>();// Reserve addition of
+														// ArrayList and List.
+		ArrayList<E> intersectionList = new ArrayList<E>();// Reserve
+															// intersection of
+															// ArrayList and
+															// List.
+		checkerSum.addAll(this.ElementList);
+		checkerSum.addAll(List);
+		intersectionList = this.intersection(List);
+		// System.out.println(checkerSum + "       " + intersectionList);
+		if (intersectionList.size() == 0)
+			return checkerSum;
+		else
+			for (int j = 0; j < checkerSum.size(); j++) {
+				// System.out.println("j : " + j + "   Element: "+
+				// checkerSum.get(j));
+				if (intersectionList.size() == 0)
+					break;
+				else if (intersectionList.get(0).equals(checkerSum.get(j))) {
+					checkerSum.remove(j);
+					intersectionList.remove(0);
+					j = 0;
+				}
+
+			}
+		return checkerSum;
+
+	}
+
+	/**
+	 * Generic ArrayList, <strong>ElementList</strong> reserves all variables.
+	 */
+	private ArrayList<E> ElementList = new ArrayList<E>();
+
+	/**
+	 * It is getter method of private ArrayList<E> ElementList.
+	 * 
+	 * @return ElementList
+	 */
+	public ArrayList<E> getElementList() {
+		return ElementList;
+	}
+
+}
